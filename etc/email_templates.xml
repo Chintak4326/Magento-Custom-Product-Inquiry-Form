@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Email/etc/email_templates.xsd">
+    <template id="inquiry_email_template_admin" label="Product Inquiry Form" file="inquiry_admin_template.html" type="html" module="ChintakExtensions_ProductInquiry" area="frontend"/>
+    <template id="inquiry_email_template_front" label="Product Inquiry Form" file="inquiry_front_email_template.html" type="html" module="ChintakExtensions_ProductInquiry" area="frontend"/>
+</config>

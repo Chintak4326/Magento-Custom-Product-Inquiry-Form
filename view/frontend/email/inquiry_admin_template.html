@@ -1,0 +1,38 @@
+<!--@subject {{trans "Product Inquiry from Chintak Extensions"}}  @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table class="message-details">
+    <tr>You have got a Product Related Inquiry, Please find below details:</tr>
+    <tr>
+        <td><strong>{{trans "Jewellery Type"}}</strong></td>
+        <td>{{var jewellery_type}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Jewellery Attribute"}}</strong></td>
+        <td>{{var jewellery_attribute}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Full Name"}}</strong></td>
+        <td>{{var fname}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Last Name"}}</strong></td>
+        <td>{{var lname}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Email"}}</strong></td>
+        <td>{{var email}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Mobile Number"}}</strong></td>
+        <td>{{var mobile}}</td>
+    </tr>
+    <tr>
+        <td><strong>{{trans "Message"}}</strong></td>
+        <td>{{var message}}</td>
+    </tr>
+</table>
+
+
+{{template config_path="design/email/footer_template"}}

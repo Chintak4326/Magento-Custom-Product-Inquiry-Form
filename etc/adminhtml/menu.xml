@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="ChintakExtensions_ProductInquiry::list" title="Product Inquiry" module="ChintakExtensions_ProductInquiry" sortOrder="99" resource="ChintakExtensions_ProductInquiry::list"/>
+
+    	<add id="ChintakExtensions_ProductInquiry::add_row" title="Product Inquiry" module="ChintakExtensions_ProductInquiry" sortOrder="20" parent="ChintakExtensions_ProductInquiry::list" action="inquiry/items" resource="ChintakExtensions_ProductInquiry::add_row"/>
+
+        <add id="ChintakExtensions_ProductInquiry::configuration" title="Configuration" module="ChintakExtensions_ProductInquiry" sortOrder="99" parent="ChintakExtensions_ProductInquiry::list" action="adminhtml/system_config/edit/section/inquiry" resource="ChintakExtensions_ProductInquiry::add_row"/>
+    </menu>
+</config>

@@ -1,0 +1,119 @@
+<div class="common-desc-padding special-request-control">
+    <h1 class="text-center special-request-title text-uppercase"><?= $block->escapeHtml(__('Contact us if you have any Product Related Inquiry')) ?></h1>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form special-request"
+                action="<?= $block->getBaseUrl().'inquiry/index/save';?>"
+                id="inquiry-form"
+                method="post"
+                enctype="multipart/form-data"
+                data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+                data-mage-init='{"validation":{}}'
+                >
+                <fieldset class="fieldset">
+                    <legend class="legend">
+                        <p><?= $block->escapeHtml(__('Please, fill in this form to get in touch with us')) ?></p>
+                    </legend>
+                    <fieldset class="fieldset row">
+                        <input type="hidden" name="country_code" id="country_code">
+                        <div class="field jewellery_type required col-lg-6">
+                            <select id="jewellery_type" name="jewellery_type" class="form-control" data-validate="{required:true}">
+                                <option value=""><?= $block->escapeHtml(__('Select Jewellery Type')) ?></option>
+                                <?php $getTypeValue = $block->getAllType();
+                                if(count($getTypeValue)){
+                                    foreach ($getTypeValue as $typevalue) { 
+                                        $typeCollectionslabel = $typevalue->getData('label');
+                                        if($typevalue != ' '){
+                                        ?>
+                                            <option value="<?= $typeCollectionslabel; ?>"><?= $typeCollectionslabel; ?></option>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="field jewellery_attribute required col-lg-6">
+                            <select id="jewellery_attribute" name="jewellery_attribute" class="form-control" data-validate="{required:true}">
+                                <option value=""><?= $block->escapeHtml(__('Select Jewellery Attribute')) ?></option>
+                                <?php $attributeSetList = $block->listAttributeSets(); ?>
+                                <?php if ($attributeSetList): ?>
+                                    <?php foreach ($attributeSetList->getItems() as $list): ?>
+                                        <option value="<?= $list->getAttributeSetName() ?>"><?= $list->getAttributeSetName() ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                        </div>
+                        
+                        <div class="field uploadimage image required col-lg-12">
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                        <input type="file" id="uploadimage" class="form-control" name="image" accept="image/*" data-validate="{required:true}" onchange="loadFile(event)" />
+                                </div>
+                                <div class="col-md-6">
+                                    <img class="uploaded-img" id="img_preview" src="#" alt="your image" style="display: none;" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field fname required col-lg-6">
+                            <div class="control">
+                                <input name="fname" id="fname" placeholder="<?= $block->escapeHtmlAttr(__('Full Name')) ?>" title="<?= $block->escapeHtmlAttr(__('Full Name')) ?>" class="form-control minimum-length-2 maximum-length-20 validate-length" type="text" data-validate="{required:true,'validate-alpha':true}"/>
+                            </div>
+                        </div>
+                        <div class="field lname required col-lg-6">
+                            <div class="control">
+                                <input name="lname" id="lname" placeholder="<?= $block->escapeHtmlAttr(__('Last Name')) ?>" title="<?= $block->escapeHtmlAttr(__('Last Name')) ?>" class="form-control minimum-length-2 maximum-length-20 validate-length" type="text" data-validate="{required:true,'validate-alpha':true}"/>
+                            </div>
+                        </div>
+                        <div class="field email required col-lg-6">
+                            <div class="control">
+                                <input name="email" id="email" placeholder="<?= $block->escapeHtmlAttr(__('Email Address')) ?>" title="<?= $block->escapeHtmlAttr(__('Email Address')) ?>" class="form-control" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                            </div>
+                        </div>
+                        <div class="field mobile required col-lg-6">
+                            <div class="control">
+                                <input type="tel" name="mobile" id="phone" placeholder="<?= $block->escapeHtmlAttr(__('Mobile Number')) ?>" title="<?= $block->escapeHtmlAttr(__('050 123 4567')) ?>" class="form-control" type="text" data-validate="{required:true, 'validate-number':true}" />
+                            </div>
+                        </div>
+                        <div class="field message required col-lg-12">
+                            <div class="control">
+                                <textarea name="message" id="message" placeholder="<?= $block->escapeHtmlAttr(__('Write Message')) ?>" title="<?= $block->escapeHtmlAttr(__('Write Message')) ?>" class="form-control maximum-length-250  validate-length" cols="5" rows="3" data-validate="{required:true}"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                </fieldset>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button type="submit" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action submit primary" id="submit_form">
+                            <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        $(document).ready(function() {
+            uploadimage.onchange = evt => {
+                const [file] = uploadimage.files
+                if (file) {
+                    img_preview.src = URL.createObjectURL(file)
+                    $('#img_preview').css('display', 'inline-block');
+                }
+            }
+            $("#uploadimage").click(function() {
+                $('#img_preview').css('display', 'none');
+            });
+        });
+    });
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "telinput": "",
+            "style": "" 
+        }
+    }
+</script>
